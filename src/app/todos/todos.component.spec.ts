@@ -14,7 +14,7 @@ describe('TodosComponent', () => {
   it('should set todos property with the items returned from the server', () => {
     // Arrange
     const todos = [1, 2, 3];
-    spyOn(service, 'getTodos').and.callFake(() => {
+    const spy = spyOn(service, 'getTodos').and.callFake(() => {
         return from([ [1, 2, 3] ]);
     });
 
@@ -41,7 +41,7 @@ describe('TodosComponent', () => {
     const spy = spyOn(service, 'add').and.returnValue(from([ todo ]));
 
     component.add();
-    console.log(component.todos);
+
     expect(component.todos.indexOf(todo)).toBeGreaterThan(0);
   });
 
